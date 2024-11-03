@@ -1,8 +1,28 @@
 import React, { useState } from 'react';
 import { PDFDocument, rgb } from 'pdf-lib';
+import axios from 'axios'
 
 function App() {
    const [isLoading, setIsLoading] = useState(false);
+
+   const getData = async () => { 
+    try { 
+      const [ response1, response2, response3, response4, response5 ] = await Promise.all([
+        axios.get('http://localhost:3000/capstones.json'), 
+        axios.get('http://localhost:3000/skills.json'), 
+        axios.get('http://localhost:3000/experiences.json'),
+        axios.get('http://localhost:3000/educations.json'),
+        axios.get('http://localhost:3000/students.json'),
+      ]);
+        console.log(response1.data);
+        console.log(response2.data);
+        console.log(response3.data);
+        console.log(response4.data);
+        console.log(response5.data);
+    } catch(error) { 
+      console.log(error)
+    }
+  }
 
    const generatePDF = async () => {
       setIsLoading(true);
@@ -114,7 +134,7 @@ function App() {
    return (
       <div style={{ textAlign: 'center', marginTop: '50px' }}>
          <h1>PDF Resume Generator</h1>
-         <button onClick={generatePDF} disabled={isLoading}>
+         <button onClick={ () => {generatePDF(), getData()}} disabled={isLoading}>
             {isLoading ? 'Generating PDF...' : 'Download Resume PDF'}
          </button>
       </div>
