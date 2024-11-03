@@ -142,7 +142,7 @@ const ResumeGenerator = () => {
          {pdfUrl && (
             <div style={{ marginTop: '20px' }}>
                <h2>PDF Preview</h2>
-               <iframe src={pdfUrl} width="600" height="800" title="PDF Preview"></iframe>
+               <iframe src={pdfUrl} width="1200" height="1600" title="PDF Preview"></iframe>
                <button onClick={handleDownloadPDF} style={{ marginTop: '10px' }}>
                   Download PDF
                </button>

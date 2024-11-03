@@ -11,7 +11,12 @@ export const generatePDF = async (data) => {
      };
 
      // Add Header Information
-     addText(`${data.first_name} ${data.last_name}`, 50, yPosition, 24, rgb(0, 0.53, 0.71));
+    //  addText(`${data.first_name} ${data.last_name}`, 50, yPosition, 24, rgb(0.0, 0.99, 0.99));
+    //  page.drawText(`${data.first_name} ${data.last_name}`, {
+    //   50,
+    //   yPosition, 24,
+    //   rgb(0.0, 0.99, 0.99)
+    //   });
      yPosition -= 30;
      addText(`Email: ${data.contact_email} | Phone: ${data.phone_number}`, 50, yPosition, 12);
      yPosition -= 15;
